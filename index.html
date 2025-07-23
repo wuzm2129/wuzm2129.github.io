@@ -31,14 +31,16 @@
         .navbar {
             display: flex;
             justify-content: center;
+            align-items: center;
             background: #fff;
-            padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 0.8rem 2rem;
             border-bottom: 1px solid #e0e0e0;
+            width: 100%;
+            gap: 2rem;
         }
         .navbar a {
             color: #333;
-            padding: 0.8rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             text-decoration: none;
             transition: color 0.3s;
             border-radius: 4px;
@@ -76,11 +78,86 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             text-align: center;
+            margin-bottom: 2rem;
         }
         .about-section h3 {
             margin-bottom: 1.5rem;
             color: #333;
             font-size: 1.8rem;
+        }
+        .section {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .section h3 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        .section p {
+            margin-bottom: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .project-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+        .project-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+        .publication-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #28a745;
+        }
+        .publication-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+        .publication-item .authors {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        .publication-item .venue {
+            font-weight: 500;
+            color: #007bff;
+        }
+        .blog-post {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #dc3545;
+        }
+        .blog-post h4 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+        .blog-post .date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
         .cv-buttons {
             display: flex;
@@ -112,29 +189,77 @@
             color: #666;
         }
     </style>
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Update active nav item (excluding Wu Zhenming)
+            const navLinks = document.querySelectorAll('.navbar a:not(.no-highlight)');
+            navLinks.forEach(link => {
+                link.style.backgroundColor = '';
+                link.style.color = '#333';
+            });
+            
+            const activeLink = document.querySelector(`a[onclick="showSection('${sectionId}')"]`);
+            if (activeLink && !activeLink.classList.contains('no-highlight')) {
+                activeLink.style.backgroundColor = '#007bff';
+                activeLink.style.color = '#fff';
+            }
+        }
+        
+        // Show about section by default
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('about');
+        });
+    </script>
 </head>
 <body>
     <nav class="navbar">
-        <a href="#about">About</a>
-        <a href="#blog">Blog</a>
-        <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
+        <a href="javascript:void(0)" onclick="showSection('about')" class="no-highlight">Wu Zhenming</a>
+        <span style="padding: 0.6rem 1.2rem; color: transparent;">About</span>
+        <a href="javascript:void(0)" onclick="showSection('blog')">Blog</a>
+        <a href="javascript:void(0)" onclick="showSection('projects')">Projects</a>
+        <a href="javascript:void(0)" onclick="showSection('publications')">Publications</a>
     </nav>
 
     <div class="container">
         <main class="main-content">
-            <section class="welcome-section">
-                <h2>Wu Zhenming</h2>
-                <p>Welcome to my personal space where I share my thoughts, projects, and academic journey.</p>
-            </section>
-
-            <section id="about" class="about-section">
+            <section id="about" class="section">
+                <div class="welcome-section">
+                    <h2>Welcome</h2>
+                    <p>Welcome to my personal space where I share my thoughts, projects, and academic journey.</p>
+                </div>
                 <h3>About Me</h3>
-                <p>I am a researcher and developer passionate about technology and innovation. Here you can learn more about my background and experience.</p>
+                <p>I am a researcher and developer passionate about technology and innovation.</p>
                 <div class="cv-buttons">
                     <a href="index_zh.html" class="button">中文简历</a>
                     <a href="index_en.html" class="button">English CV</a>
                 </div>
+            </section>
+
+            <section id="blog" class="section">
+                <h3>Blog Posts</h3>
+                <p>Coming soon...</p>
+            </section>
+
+            <section id="projects" class="section">
+                <h3>My Projects</h3>
+                <p>Coming soon...</p>
+            </section>
+
+            <section id="publications" class="section">
+                <h3>Publications</h3>
+                <p>Coming soon...</p>
             </section>
         </main>
     </div>
