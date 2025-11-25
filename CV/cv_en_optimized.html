@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wu Zhenming - CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --light-text: #666;
+            --bg-color: #f4f7f6;
+            --sidebar-bg: #2c3e50;
+            --sidebar-text: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 1000px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 30px;
+        }
+
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .profile-title {
+            font-size: 16px;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .contact-item i {
+            width: 25px;
+            color: var(--secondary-color);
+            font-size: 16px;
+        }
+
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .school {
+            font-weight: 700;
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .degree {
+            color: #bdc3c7;
+            font-size: 13px;
+            margin-bottom: 2px;
+        }
+
+        .date {
+            color: var(--secondary-color);
+            font-size: 12px;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .gpa {
+            font-size: 13px;
+            color: #ecf0f1;
+        }
+
+        .skill-category {
+            margin-bottom: 15px;
+        }
+
+        .skill-category h4 {
+            font-size: 14px;
+            color: #bdc3c7;
+            margin-bottom: 8px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .experience-item {
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #eee;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .exp-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .exp-date {
+            font-size: 13px;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        .exp-company {
+            font-size: 14px;
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .exp-details {
+            list-style-type: none;
+        }
+
+        .exp-details li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 15px;
+            color: #555;
+        }
+
+        .exp-details li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        .honor-list {
+            list-style: none;
+        }
+
+        .honor-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .honor-item i {
+            color: #f1c40f;
+            margin-right: 10px;
+            margin-top: 4px;
+            font-size: 14px;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .container {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                margin: 0;
+            }
+            .sidebar {
+                padding: 20px;
+            }
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h1 class="profile-name">Wu Zhenming</h1>
+                <div class="profile-title">Modern Mechanics Student</div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Contact</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>wzm1040@mail.ustc.edu.cn</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(+86) 182-9353-1330</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Education</h3>
+                <div class="education-item">
+                    <div class="school">University of Science and Technology of China</div>
+                    <div class="degree">Major: Modern Mechanics</div>
+                    <div class="date">Exp. June 2026</div>
+                    <div class="gpa">GPA: 3.44/4.3 (84.71)</div>
+                    <div class="gpa">Rank: 26/64</div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Skills</h3>
+                <div class="skill-category">
+                    <h4>Technical</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">3D Bioprinting</span>
+                        <span class="skill-tag">Matlab</span>
+                        <span class="skill-tag">C/Python</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Languages</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">English (TOEFL 100)</span>
+                        <span class="skill-tag">English (CET6 529)</span>
+                        <span class="skill-tag">Mandarin (Native)</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-flask"></i> Research Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-title">Project Leader</div>
+                        <div class="exp-date">May 2024 – Present</div>
+                    </div>
+                    <div class="exp-company">China National University Student Innovation Development Program</div>
+                    <div style="font-style: italic; margin-bottom: 5px; font-size: 0.9em; color: #666;">"Investigation of the mechanical mechanism of angiogenesis"</div>
+                    <ul class="exp-details">
+                        <li>Conduct a literature review on angiogenesis and 3D bioprinting to establish a knowledge framework</li>
+                        <li>Learned the basic experimental operations of cell culture</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-title">Summer Research</div>
+                        <div class="exp-date">Summer 2025</div>
+                    </div>
+                    <div class="exp-company">Lab visit and academic exchange under Prof. Yuan Lin, HKU</div>
+                    <ul class="exp-details">
+                        <li>Learned to operate experimental instruments such as the confocal</li>
+                        <li>Learned 3D printing within microfluidic chips</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-title">Laboratory Internship</div>
+                        <div class="exp-date"></div>
+                    </div>
+                    <div class="exp-company">Biomechanics and Soft Matter Laboratory, USTC</div>
+                    <ul class="exp-details">
+                        <li>Learned to operate experimental instruments such as the atomic force microscope</li>
+                        <li>Learned the operational methodology of the 3D bioprinter</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-trophy"></i> Honors & Awards</h2>
+                <ul class="honor-list">
+                    <li class="honor-item">
+                        <i class="fas fa-award"></i>
+                        <span>First Prize in the 2025 Anhui Provincial University Student Mechanics Competition</span>
+                    </li>
+                    <li class="honor-item">
+                        <i class="fas fa-award"></i>
+                        <span>National Third Prize in the 2025 Zhou Peiyuan National University Student Mechanics Competition</span>
+                    </li>
+                    <li class="honor-item">
+                        <i class="fas fa-award"></i>
+                        <span>Silver Award for Outstanding Student Scholarship of the USTC (2024-2025)</span>
+                    </li>
+                    <li class="honor-item">
+                        <i class="fas fa-award"></i>
+                        <span>Bronze Award for Outstanding Student Scholarship of the USTC (2023-2024)</span>
+                    </li>
+                    <li class="honor-item">
+                        <i class="fas fa-award"></i>
+                        <span>Bronze Award for Outstanding Freshman Scholarship at the USTC</span>
+                    </li>
+                    <li class="honor-item">
+                        <i class="fas fa-award"></i>
+                        <span>National Third Prize in the 2024 China College Students Information Literacy Competition</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fas fa-users"></i> Leadership</h2>
+                
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-title">President / Vice President</div>
+                        <div class="exp-date">2023 - 2025</div>
+                    </div>
+                    <div class="exp-company">The Blockchain Association of USTC</div>
+                    <ul class="exp-details">
+                        <li>President (2023 - 2024)</li>
+                        <li>Vice President (2024 - 2025)</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div class="exp-title">Student Representative</div>
+                        <div class="exp-date">2024 - 2025</div>
+                    </div>
+                    <div class="exp-company">Student Congress of the USTC</div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
